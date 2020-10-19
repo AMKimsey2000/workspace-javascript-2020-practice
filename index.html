@@ -116,8 +116,7 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                  
                 }
             </script>
             <p> <input type="text" name="num1" /> + <input type="text" name="num2">
@@ -147,14 +146,26 @@
                 </p>
             </form>
 
+            <script>
+              function welcome() {
+                document.getElementById("message").textContent = "Welcome " + document.getElementById("cName").value;
+              }
+              document.getElementById("cName").addEventListener("blur", welcome, false);
+            </script>
+
         </div>
 
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
-
+            <input type="text" id="numSquare" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="sqResult"> ? </label>
+            <script>
+              function calc() {
+                document.getElementById("sqResult").textContent = Math.pow(parseFloat(document.getElementById("numSquare").value), 2);
+              }
+              document.getElementById("numSquare").addEventListener("blur", calc, false);
+            </script>
         </div>
 
         <div class="practice">
@@ -167,9 +178,15 @@
 
             <input type="button" id="tryit" value="Click and Display">​
 
-            <div id="message">​
+            <div id="codeBox">
+              ​
             </div>
-
+            <script>
+              function displayHTML() {
+                document.getElementById("codeBox").innerHTML = document.getElementById("code").value;
+              }
+              document.getElementById("tryit").addEventListener("click", displayHTML);
+            </script>
 
         </div>
 
@@ -192,9 +209,27 @@
             </p>
 
             <script type="text/javascript">
-
-
-
+              function calcPrice() {
+                var price = 0;
+                if (document.getElementById("year").value == "2003") {
+                  price += 2600;
+                  if (document.getElementById("condition").value == "Good") {
+                    price += 1050;
+                  } else {
+                    price += 625;
+                  }
+                } else {
+                  price += 3100;
+                  if (document.getElementById("condition").value == "Good") {
+                    price += 1450;
+                  } else {
+                    price += 950;
+                  }
+                }
+                document.getElementById("price").textContent = "$ " + price;
+              }
+              document.getElementById("year").addEventListener("change", calcPrice);
+              document.getElementById("condition").addEventListener("change", calcPrice);
             </script>
 
         </div>
