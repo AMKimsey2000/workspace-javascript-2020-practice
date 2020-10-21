@@ -21,7 +21,7 @@ body{
     margin: auto auto;
     padding: 5%;
     position: relative;
-    
+    transition: 0.5s linear;
 }
 
 h1{
