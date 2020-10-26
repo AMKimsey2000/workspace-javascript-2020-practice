@@ -343,17 +343,32 @@
         <div class="practice">
             <h1>For Loop Practice 2 </h1>
             <!--  Input number box -->
-            <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
+            <p> N = <input type="number" min="1" max="10" id="multTableVal"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" value="Click for multiplication table" id = "dispMultTable">
             </p>
 
             <!-- output section -->
-            <div id="output">
+            <div id="outputTable">
 
 
             </div>
-
+            <script>
+              function dispTable() {
+                var toPrint = "<table style = 'width: 200%;'>";
+                var inVal = parseInt($("#multTableVal").val());
+                for (var i = 1; i <= inVal; i++) {
+                  toPrint += "<tr>";
+                  for (var j = 1; j <= inVal; j++) {
+                    toPrint += "<td style = 'display: inline-block;'>" + i + "x" + j + " = " + (i * j) + "</td>";
+                  }
+                  toPrint += "</tr>";
+                }
+                toPrint += "</table>";
+                $("#outputTable").html(toPrint);
+              }
+              $("#dispMultTable").click(dispTable);
+            </script>
         </div>
 
 
@@ -377,7 +392,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id = "theDie"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -398,7 +413,17 @@
                     <td id="r6"></td>
                 </tr>
             </table>
-
+            <script>
+              function roll() {
+                var die = $("#theDie");
+                var randNum = parseInt((Math.random() * 6) + 1);
+                for (var i = 0; i < 100; i++) {
+                  randNum = parseInt((Math.random() * 6) + 1);
+                  die.attr("src", "img/die" + randNum + ".png");
+                }
+              }
+              $("#roll").click(roll);
+            </script>
         </div>
 
 
