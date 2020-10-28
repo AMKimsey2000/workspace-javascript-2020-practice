@@ -387,6 +387,18 @@
             <h1> A simple JavaScript Quiz</h1>
             <p> A simple JavaScript Quiz </p>
             <p>Target: Generate 10 basic multiplication problems using JavaScript and check the answers</p>
+            <p id = "quiz">
+              <span> </span> + <span></span> = <input type = "text" size = 10>
+              <input type = "button" value = "Next">
+            </p>
+            <script>
+              function genNumber() {
+                return parseInt(Math.random() * 11);
+              }
+              $("#quiz span").each(function(){
+                $(this).text(genNumber());
+              });
+            </script>
         </div>
 
         <div class="practice">
@@ -445,6 +457,19 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 
+            <script>
+              var imageList = document.querySelectorAll(".img-container-hide");
+              var index = 0;
+              imageList[index].setAttribute("class", "img-container");
+
+              function change() {
+                imageList[index].setAttribute("class", "img-container-hide");
+                index = (index + 1) % imageList.length;
+                imageList[index].setAttribute("class", "img-container");
+              }
+
+              setInterval(change, 5000);
+            </script>
         </div>
 
 
