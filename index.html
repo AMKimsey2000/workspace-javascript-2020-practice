@@ -389,15 +389,34 @@
             <p>Target: Generate 10 basic multiplication problems using JavaScript and check the answers</p>
             <p id = "quiz">
               <span> </span> + <span></span> = <input type = "text" size = 10>
-              <input type = "button" value = "Next">
+              <input type = "button" value = "Start">
             </p>
             <script>
+              var nextBtn = $("#quiz input[type = 'button']");
+              var box = $("#quiz input[type = 'text']");
               function genNumber() {
                 return parseInt(Math.random() * 11);
               }
-              $("#quiz span").each(function(){
-                $(this).text(genNumber());
-              });
+              nextBtn.click(function() {
+                box.val("");
+                box.css("background-color", "white");
+                $("#quiz span").each(function(){
+                  $(this).text(genNumber());
+                });
+
+                nextBtn.hide();
+                nextBtn.val("Next");
+
+                box.blur(function() {
+                  var ans = parseInt($(this).prev().text()) + parseInt($(this).prev().prev().text());
+                  if (parseInt($(this).val()) == ans) {
+                    box.css("background-color", "#00FF00")
+                    nextBtn.show();
+                  } else {
+                    box.css("background-color", "#FF0000")
+                  }
+                });
+              })
             </script>
         </div>
 
@@ -429,10 +448,7 @@
               function roll() {
                 var die = $("#theDie");
                 var randNum = parseInt((Math.random() * 6) + 1);
-                for (var i = 0; i < 100; i++) {
-                  randNum = parseInt((Math.random() * 6) + 1);
-                  die.attr("src", "img/die" + randNum + ".png");
-                }
+                die.attr("src", "https://cdn.jsdelivr.net/gh/yilianz/workspace-javascript@master/img/die" + randNum + ".png");
               }
               $("#roll").click(roll);
             </script>
